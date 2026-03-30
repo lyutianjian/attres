@@ -1,0 +1,22 @@
+# Core training stack
+# Use Python 3.10+ for best compatibility with recent PyTorch and HF packages.
+torch>=2.2
+numpy>=1.24
+
+# Tokenization and model interoperability
+tiktoken>=0.7
+transformers>=4.40
+
+# Dataset preparation
+datasets>=2.18
+tqdm>=4.66
+requests>=2.31
+
+# Experiment tracking (optional in code, included for ready-to-run containers)
+wandb>=0.17
+
+# Notebook and analysis dependencies used by project notebooks
+pandas>=2.1
+matplotlib>=3.8
+jupyterlab>=4.0
+ipykernel>=6.29
