@@ -1,4 +1,4 @@
-# Deep-and-narrow TinyStories baseline to stress residual aggregation on a single 8GB GPU.
+# Deep-and-narrow TinyStories baseline tuned for RTX5090 32G high-throughput runs.
 
 out_dir = 'out-tinystories-20l'
 eval_interval = 400
@@ -9,14 +9,14 @@ always_save_checkpoint = False
 
 wandb_log = True
 wandb_project = 'tinystories'
-wandb_run_name = 'baseline-20l-256d'
+wandb_run_name = 'baseline-20l-256d-rtx5090-bs32-b512-cmp'
 track_diagnostics = True
 diagnostics_interval = 100
 
 dataset = 'tinystories'
-gradient_accumulation_steps = 16
-batch_size = 4
-block_size = 256
+gradient_accumulation_steps = 2
+batch_size = 32
+block_size = 512
 
 n_layer = 20
 n_head = 8
@@ -31,4 +31,4 @@ min_lr = 3e-5
 beta2 = 0.99
 warmup_iters = 400
 
-compile = False
+compile = True

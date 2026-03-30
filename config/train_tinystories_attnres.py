@@ -1,4 +1,4 @@
-# Full AttnRes counterpart to train_tinystories.py for clean A/B experiments.
+# TinyStories AttnRes counterpart tuned for RTX5090 32G high-throughput A/B runs.
 
 out_dir = 'out-tinystories-12l-attnres'
 eval_interval = 400
@@ -9,14 +9,14 @@ always_save_checkpoint = False
 
 wandb_log = True
 wandb_project = 'tinystories'
-wandb_run_name = 'attnres-12l-320d'
+wandb_run_name = 'attnres-12l-320d-rtx5090-bs64-b512-cmp'
 track_diagnostics = True
 diagnostics_interval = 100
 
 dataset = 'tinystories'
-gradient_accumulation_steps = 8
-batch_size = 8
-block_size = 256
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 512
 
 n_layer = 12
 n_head = 8
@@ -33,4 +33,4 @@ min_lr = 3e-5
 beta2 = 0.99
 warmup_iters = 200
 
-compile = False
+compile = True
