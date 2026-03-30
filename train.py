@@ -20,6 +20,7 @@ import os
 import time
 import math
 import pickle
+import subprocess
 from contextlib import nullcontext
 
 import numpy as np
@@ -43,6 +44,8 @@ init_from = 'scratch' # 'scratch' or 'resume' or 'gpt2*'
 wandb_log = False # disabled by default
 wandb_project = 'owt'
 wandb_run_name = 'gpt2' # 'run' + str(time.time())
+track_diagnostics = False
+diagnostics_interval = 100
 # data
 dataset = 'openwebtext'
 gradient_accumulation_steps = 5 * 8 # used to simulate larger batch sizes
@@ -54,6 +57,8 @@ n_head = 12
 n_embd = 768
 dropout = 0.0 # for pretraining 0 is good, for finetuning try 0.1+
 bias = False # do we use bias inside LayerNorm and Linear layers?
+use_attn_res = False
+attn_res_rms_eps = 1e-5
 # adamw optimizer
 learning_rate = 6e-4 # max learning rate
 max_iters = 600000 # total number of training iterations
@@ -72,6 +77,8 @@ backend = 'nccl' # 'nccl', 'gloo', etc.
 device = 'cuda' # examples: 'cpu', 'cuda', 'cuda:0', 'cuda:1' etc., or try 'mps' on macbooks
 dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float16' # 'float32', 'bfloat16', or 'float16', the latter will auto implement a GradScaler
 compile = True # use PyTorch 2.0 to compile the model to be faster
+auto_shutdown = False # if True, shutdown the machine when training exits normally
+shutdown_delay_seconds = 60 # delay before shutdown command executes
 # -----------------------------------------------------------------------------
 config_keys = [k for k,v in globals().items() if not k.startswith('_') and isinstance(v, (int, float, bool, str))]
 exec(open('configurator.py').read()) # overrides from command line or config file
@@ -145,7 +152,8 @@ if os.path.exists(meta_path):
 
 # model init
 model_args = dict(n_layer=n_layer, n_head=n_head, n_embd=n_embd, block_size=block_size,
-                  bias=bias, vocab_size=None, dropout=dropout) # start with model_args from command line
+                  bias=bias, vocab_size=None, dropout=dropout,
+                  use_attn_res=use_attn_res, attn_res_rms_eps=attn_res_rms_eps) # start with model_args from command line
 if init_from == 'scratch':
     # init a new model from scratch
     print("Initializing a new model from scratch")
@@ -161,10 +169,14 @@ elif init_from == 'resume':
     ckpt_path = os.path.join(out_dir, 'ckpt.pt')
     checkpoint = torch.load(ckpt_path, map_location=device)
     checkpoint_model_args = checkpoint['model_args']
+    default_config = GPTConfig()
     # force these config attributes to be equal otherwise we can't even resume training
     # the rest of the attributes (e.g. dropout) can stay as desired from command line
-    for k in ['n_layer', 'n_head', 'n_embd', 'block_size', 'bias', 'vocab_size']:
-        model_args[k] = checkpoint_model_args[k]
+    for k in ['n_layer', 'n_head', 'n_embd', 'block_size', 'bias', 'vocab_size', 'use_attn_res', 'attn_res_rms_eps']:
+        if k in checkpoint_model_args:
+            model_args[k] = checkpoint_model_args[k]
+        else:
+            model_args[k] = getattr(default_config, k)
     # create the model
     gptconf = GPTConfig(**model_args)
     model = GPT(gptconf)
@@ -181,10 +193,14 @@ elif init_from == 'resume':
 elif init_from.startswith('gpt2'):
     print(f"Initializing from OpenAI GPT-2 weights: {init_from}")
     # initialize from OpenAI GPT-2 weights
-    override_args = dict(dropout=dropout)
+    override_args = dict(
+        dropout=dropout,
+        use_attn_res=use_attn_res,
+        attn_res_rms_eps=attn_res_rms_eps,
+    )
     model = GPT.from_pretrained(init_from, override_args)
     # read off the created config params, so we can store them into checkpoint correctly
-    for k in ['n_layer', 'n_head', 'n_embd', 'block_size', 'bias', 'vocab_size']:
+    for k in ['n_layer', 'n_head', 'n_embd', 'block_size', 'bias', 'vocab_size', 'use_attn_res', 'attn_res_rms_eps']:
         model_args[k] = getattr(model.config, k)
 # crop down the model block size if desired, using model surgery
 if block_size < model.config.block_size:
@@ -227,6 +243,44 @@ def estimate_loss():
     model.train()
     return out
 
+def should_log_diagnostics(it):
+    return wandb_log and track_diagnostics and master_process and (it % diagnostics_interval == 0)
+
+def module_grad_l2(module):
+    total = 0.0
+    for param in module.parameters():
+        if param.grad is None:
+            continue
+        grad = param.grad.detach().float()
+        total += grad.pow(2).sum().item()
+    return math.sqrt(total)
+
+def collect_diagnostics(raw_model):
+    stats = {}
+    debug_stats = raw_model.pop_debug_stats()
+    if debug_stats is not None:
+        stats['diag/token_embed_rms'] = debug_stats['token_embed_rms']
+        stats['diag/final_hidden_rms'] = debug_stats['final_hidden_rms']
+        for idx, value in enumerate(debug_stats['attn_out_rms']):
+            stats[f'diag/attn_out_rms/block_{idx}'] = value
+        for idx, value in enumerate(debug_stats['mlp_out_rms']):
+            stats[f'diag/mlp_out_rms/block_{idx}'] = value
+        for idx, value in enumerate(debug_stats['block_output_rms']):
+            stats[f'diag/block_output_rms/block_{idx}'] = value
+        for idx, value in enumerate(debug_stats['agg_input_rms']):
+            stats[f'diag/agg_input_rms/query_{idx}'] = value
+        for idx, value in enumerate(debug_stats['attnres_query_entropy']):
+            stats[f'diag/attnres_entropy/query_{idx}'] = value
+        for idx, value in enumerate(debug_stats['attnres_query_max_weight']):
+            stats[f'diag/attnres_max_weight/query_{idx}'] = value
+        for idx, value in enumerate(debug_stats['attnres_query_latest_weight']):
+            stats[f'diag/attnres_latest_weight/query_{idx}'] = value
+    for idx, block in enumerate(raw_model.transformer.h):
+        stats[f'diag/grad_norm/block_{idx}'] = module_grad_l2(block)
+    if raw_model.attn_res is not None:
+        stats['diag/grad_norm/attn_res'] = module_grad_l2(raw_model.attn_res)
+    return stats
+
 # learning rate decay scheduler (cosine with warmup)
 def get_lr(it):
     # 1) linear warmup for warmup_iters steps
@@ -246,12 +300,23 @@ if wandb_log and master_process:
     import wandb
     wandb.init(project=wandb_project, name=wandb_run_name, config=config)
 
+def trigger_auto_shutdown(delay_seconds):
+    delay_seconds = max(0, int(delay_seconds))
+    if os.name == 'nt':
+        cmd = ['shutdown', '/s', '/t', str(delay_seconds)]
+    else:
+        print("auto_shutdown=True but this script currently supports automatic shutdown only on Windows.")
+        return
+    print(f"Auto-shutdown enabled. Running command: {' '.join(cmd)}")
+    subprocess.run(cmd, check=False)
+
 # training loop
 X, Y = get_batch('train') # fetch the very first batch
 t0 = time.time()
 local_iter_num = 0 # number of iterations in the lifetime of this process
 raw_model = model.module if ddp else model # unwrap DDP container if needed
 running_mfu = -1.0
+run_completed = False
 while True:
 
     # determine and set the learning rate for this iteration
@@ -284,11 +349,13 @@ while True:
                 }
                 print(f"saving checkpoint to {out_dir}")
                 torch.save(checkpoint, os.path.join(out_dir, 'ckpt.pt'))
-    if iter_num == 0 and eval_only:
+    if eval_only:
+        run_completed = True
         break
 
     # forward backward update, with optional gradient accumulation to simulate larger batch size
     # and using the GradScaler if data type is float16
+    capture_diagnostics = should_log_diagnostics(iter_num)
     for micro_step in range(gradient_accumulation_steps):
         if ddp:
             # in DDP training we only need to sync gradients at the last micro step.
@@ -296,6 +363,7 @@ while True:
             # I really dislike that this bloats the code and forces us to repeat code
             # looking at the source of that context manager, it just toggles this variable
             model.require_backward_grad_sync = (micro_step == gradient_accumulation_steps - 1)
+        raw_model.set_debug(capture_diagnostics and micro_step == gradient_accumulation_steps - 1)
         with ctx:
             logits, loss = model(X, Y)
             loss = loss / gradient_accumulation_steps # scale the loss to account for gradient accumulation
@@ -304,9 +372,12 @@ while True:
         # backward pass, with gradient scaling if training in fp16
         scaler.scale(loss).backward()
     # clip the gradient
-    if grad_clip != 0.0:
+    if grad_clip != 0.0 or capture_diagnostics:
         scaler.unscale_(optimizer)
+    if grad_clip != 0.0:
         torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
+    diagnostic_stats = collect_diagnostics(raw_model) if capture_diagnostics else {}
+    raw_model.set_debug(False)
     # step the optimizer and scaler if training in fp16
     scaler.step(optimizer)
     scaler.update()
@@ -317,7 +388,7 @@ while True:
     t1 = time.time()
     dt = t1 - t0
     t0 = t1
-    if iter_num % log_interval == 0 and master_process:
+    if (iter_num % log_interval == 0 or capture_diagnostics) and master_process:
         # get loss as float. note: this is a CPU-GPU sync point
         # scale up to undo the division above, approximating the true total loss (exact would have been a sum)
         lossf = loss.item() * gradient_accumulation_steps
@@ -325,12 +396,26 @@ while True:
             mfu = raw_model.estimate_mfu(batch_size * gradient_accumulation_steps, dt)
             running_mfu = mfu if running_mfu == -1.0 else 0.9*running_mfu + 0.1*mfu
         print(f"iter {iter_num}: loss {lossf:.4f}, time {dt*1000:.2f}ms, mfu {running_mfu*100:.2f}%")
+        if wandb_log:
+            log_data = {
+                "iter": iter_num,
+                "train/step_loss": lossf,
+                "lr": lr,
+                "mfu": running_mfu*100,
+            }
+            if capture_diagnostics:
+                log_data.update(diagnostic_stats)
+            wandb.log(log_data)
     iter_num += 1
     local_iter_num += 1
 
     # termination conditions
     if iter_num > max_iters:
+        run_completed = True
         break
 
 if ddp:
     destroy_process_group()
+
+if master_process and auto_shutdown and run_completed:
+    trigger_auto_shutdown(shutdown_delay_seconds)

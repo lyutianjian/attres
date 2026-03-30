@@ -26,6 +26,18 @@ class LayerNorm(nn.Module):
     def forward(self, input):
         return F.layer_norm(input, self.weight.shape, self.weight, self.bias, 1e-5)
 
+class RMSNorm(nn.Module):
+    """A minimal RMSNorm used for depth-wise AttnRes keys."""
+
+    def __init__(self, ndim, eps=1e-5):
+        super().__init__()
+        self.weight = nn.Parameter(torch.ones(ndim))
+        self.eps = eps
+
+    def forward(self, input):
+        scale = torch.rsqrt(input.pow(2).mean(dim=-1, keepdim=True) + self.eps)
+        return input * scale * self.weight
+
 class CausalSelfAttention(nn.Module):
 
     def __init__(self, config):
@@ -91,6 +103,31 @@ class MLP(nn.Module):
         x = self.dropout(x)
         return x
 
+class AttentionResiduals(nn.Module):
+
+    def __init__(self, config):
+        super().__init__()
+        self.norm = RMSNorm(config.n_embd, eps=config.attn_res_rms_eps)
+        # One learned pseudo-query per residual unit plus one final aggregation query.
+        self.queries = nn.Parameter(torch.zeros(2 * config.n_layer + 1, config.n_embd))
+
+    def forward(self, history, query_idx, return_stats=False):
+        values = torch.stack(history, dim=0) # (depth, B, T, C)
+        keys = self.norm(values)
+        logits = torch.einsum('c,nbtc->nbt', self.queries[query_idx], keys)
+        weights = F.softmax(logits, dim=0)
+        output = torch.einsum('nbt,nbtc->btc', weights, values)
+        if not return_stats:
+            return output
+        mean_weights = weights.detach().float().mean(dim=(1, 2))
+        entropy = -(mean_weights * (mean_weights.clamp_min(1e-8).log())).sum().item()
+        stats = {
+            'entropy': entropy,
+            'max_weight': mean_weights.max().item(),
+            'latest_weight': mean_weights[-1].item(),
+        }
+        return output, stats
+
 class Block(nn.Module):
 
     def __init__(self, config):
@@ -100,9 +137,13 @@ class Block(nn.Module):
         self.ln_2 = LayerNorm(config.n_embd, bias=config.bias)
         self.mlp = MLP(config)
 
-    def forward(self, x):
-        x = x + self.attn(self.ln_1(x))
-        x = x + self.mlp(self.ln_2(x))
+    def forward(self, x, return_suboutputs=False):
+        attn_out = self.attn(self.ln_1(x))
+        x = x + attn_out
+        mlp_out = self.mlp(self.ln_2(x))
+        x = x + mlp_out
+        if return_suboutputs:
+            return x, attn_out, mlp_out
         return x
 
 @dataclass
@@ -114,6 +155,8 @@ class GPTConfig:
     n_embd: int = 768
     dropout: float = 0.0
     bias: bool = True # True: bias in Linears and LayerNorms, like GPT-2. False: a bit better and faster
+    use_attn_res: bool = False
+    attn_res_rms_eps: float = 1e-5
 
 class GPT(nn.Module):
 
@@ -130,7 +173,10 @@ class GPT(nn.Module):
             h = nn.ModuleList([Block(config) for _ in range(config.n_layer)]),
             ln_f = LayerNorm(config.n_embd, bias=config.bias),
         ))
+        self.attn_res = AttentionResiduals(config) if config.use_attn_res else None
         self.lm_head = nn.Linear(config.n_embd, config.vocab_size, bias=False)
+        self.collect_debug_stats = False
+        self.last_debug_stats = None
         # with weight tying when using torch.compile() some warnings get generated:
         # "UserWarning: functional_call was passed multiple values for tied weights.
         # This behavior is deprecated and will be an error in future versions"
@@ -167,6 +213,19 @@ class GPT(nn.Module):
         elif isinstance(module, nn.Embedding):
             torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
 
+    def set_debug(self, enabled):
+        self.collect_debug_stats = enabled
+        if not enabled:
+            self.last_debug_stats = None
+
+    def pop_debug_stats(self):
+        stats = self.last_debug_stats
+        self.last_debug_stats = None
+        return stats
+
+    def _activation_rms(self, x):
+        return x.detach().float().pow(2).mean(dim=-1).sqrt().mean().item()
+
     def forward(self, idx, targets=None):
         device = idx.device
         b, t = idx.size()
@@ -177,9 +236,68 @@ class GPT(nn.Module):
         tok_emb = self.transformer.wte(idx) # token embeddings of shape (b, t, n_embd)
         pos_emb = self.transformer.wpe(pos) # position embeddings of shape (t, n_embd)
         x = self.transformer.drop(tok_emb + pos_emb)
-        for block in self.transformer.h:
-            x = block(x)
+        debug_stats = None
+        if self.collect_debug_stats:
+            debug_stats = {
+                'token_embed_rms': self._activation_rms(tok_emb + pos_emb),
+                'block_output_rms': [],
+                'attn_out_rms': [],
+                'mlp_out_rms': [],
+                'agg_input_rms': [],
+                'attnres_query_entropy': [],
+                'attnres_query_max_weight': [],
+                'attnres_query_latest_weight': [],
+            }
+        if self.attn_res is None:
+            for block in self.transformer.h:
+                if debug_stats is None:
+                    x = block(x)
+                else:
+                    x, attn_out, mlp_out = block(x, return_suboutputs=True)
+                    debug_stats['attn_out_rms'].append(self._activation_rms(attn_out))
+                    debug_stats['mlp_out_rms'].append(self._activation_rms(mlp_out))
+                    debug_stats['block_output_rms'].append(self._activation_rms(x))
+        else:
+            history = [x]
+            for block_idx, block in enumerate(self.transformer.h):
+                if debug_stats is None:
+                    x = self.attn_res(history, 2 * block_idx)
+                else:
+                    x, attn_stats = self.attn_res(history, 2 * block_idx, return_stats=True)
+                    debug_stats['agg_input_rms'].append(self._activation_rms(x))
+                    debug_stats['attnres_query_entropy'].append(attn_stats['entropy'])
+                    debug_stats['attnres_query_max_weight'].append(attn_stats['max_weight'])
+                    debug_stats['attnres_query_latest_weight'].append(attn_stats['latest_weight'])
+                attn_out = block.attn(block.ln_1(x))
+                history.append(attn_out)
+                if debug_stats is not None:
+                    debug_stats['attn_out_rms'].append(self._activation_rms(attn_out))
+
+                if debug_stats is None:
+                    x = self.attn_res(history, 2 * block_idx + 1)
+                else:
+                    x, mlp_stats = self.attn_res(history, 2 * block_idx + 1, return_stats=True)
+                    debug_stats['agg_input_rms'].append(self._activation_rms(x))
+                    debug_stats['attnres_query_entropy'].append(mlp_stats['entropy'])
+                    debug_stats['attnres_query_max_weight'].append(mlp_stats['max_weight'])
+                    debug_stats['attnres_query_latest_weight'].append(mlp_stats['latest_weight'])
+                mlp_out = block.mlp(block.ln_2(x))
+                history.append(mlp_out)
+                if debug_stats is not None:
+                    debug_stats['mlp_out_rms'].append(self._activation_rms(mlp_out))
+                    debug_stats['block_output_rms'].append(self._activation_rms(mlp_out))
+
+            if debug_stats is None:
+                x = self.attn_res(history, 2 * self.config.n_layer)
+            else:
+                x, final_stats = self.attn_res(history, 2 * self.config.n_layer, return_stats=True)
+                debug_stats['attnres_query_entropy'].append(final_stats['entropy'])
+                debug_stats['attnres_query_max_weight'].append(final_stats['max_weight'])
+                debug_stats['attnres_query_latest_weight'].append(final_stats['latest_weight'])
         x = self.transformer.ln_f(x)
+        if debug_stats is not None:
+            debug_stats['final_hidden_rms'] = self._activation_rms(x)
+            self.last_debug_stats = debug_stats
 
         if targets is not None:
             # if we are given some desired targets also calculate the loss
@@ -207,8 +325,9 @@ class GPT(nn.Module):
     def from_pretrained(cls, model_type, override_args=None):
         assert model_type in {'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'}
         override_args = override_args or {} # default to empty dict
-        # only dropout can be overridden see more notes below
-        assert all(k == 'dropout' for k in override_args)
+        # These flags are safe to override because they do not change the GPT-2 weight layout
+        allowed_override_keys = {'dropout', 'use_attn_res', 'attn_res_rms_eps'}
+        assert all(k in allowed_override_keys for k in override_args)
         from transformers import GPT2LMHeadModel
         print("loading weights from pretrained gpt: %s" % model_type)
 
@@ -227,12 +346,17 @@ class GPT(nn.Module):
         if 'dropout' in override_args:
             print(f"overriding dropout rate to {override_args['dropout']}")
             config_args['dropout'] = override_args['dropout']
+        if 'use_attn_res' in override_args:
+            config_args['use_attn_res'] = override_args['use_attn_res']
+        if 'attn_res_rms_eps' in override_args:
+            config_args['attn_res_rms_eps'] = override_args['attn_res_rms_eps']
         # create a from-scratch initialized minGPT model
         config = GPTConfig(**config_args)
         model = GPT(config)
         sd = model.state_dict()
         sd_keys = sd.keys()
         sd_keys = [k for k in sd_keys if not k.endswith('.attn.bias')] # discard this mask / buffer, not a param
+        sd_keys = [k for k in sd_keys if not k.startswith('attn_res.')] # AttnRes params are newly initialized
 
         # init a huggingface/transformers model
         model_hf = GPT2LMHeadModel.from_pretrained(model_type)
