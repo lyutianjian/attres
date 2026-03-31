@@ -1,0 +1,369 @@
+Overriding: out_dir = out-tinystories-12l-attnres
+Overriding: start = Once upon a time
+number of parameters: 30.84M
+Loading meta from data\tinystories\meta.pkl...
+No stoi/itos found in meta.pkl, assuming gpt2 tokenizer...
+Once upon a time there was a little girl named Lily. She loved to play in her garden with her toys. One day, she saw a dirty spider flying around the garden. She was scared, but her mommy told her not to be scared.
+
+Later that day, Lily went to play in the garden. She saw a butterfly and tried to catch it. But the butterfly flew away. Lily felt sad, but she remembered her mommy's warning. She ran inside and told her mommy.
+
+Her mommy told her to be careful and not play near the garden. Lily promised to be more careful and walked around the garden. She saw a butterfly and tried to catch it. But the butterfly flew away before it landed. Lily was happy, but she still felt scared.
+
+Lily learned that it's important to be careful and not to play near the flowers. She also learned that it's important to be careful and not play near the garden.<|endoftext|>Once upon a time, there was a big dog named Max. Max was very naughty and loved to play tricks on his friends. One day, Max's owner gave him a present. It was a string with a bird on it. Max was so happy and he wanted to show it to the other animals in the forest.
+
+Max's owner said, "Max, it's time for your nap now. Let's wrap your present." Max's friend asked, "What is a string?" Max replied, "A string is a big, shiny, but it's a gift from my dog. It's a gift from my best friend."
+
+Max's owner was happy to see his present. He gave Max a big hug and said, "You are so kind, Max. You know, you know. Your gift is going to be so pretty when you wrap your present. Have a good day!" Max wagged his tail and went to sleep. He was very happy and grateful that he made his friend smile.<|endoftext|>Once upon a time, there was a little boy named Timmy. Timmy loved to play with his toys and make them share with his friends. One day, Timmy and his friends went on a picnic in a big field. They ate sandwiches and drank juice while playing. 
+
+As they were walking back home, Timmy noticed a strange truck. It was making noise when it hit the ground. Timmy's friend asked him, "What is that noise?" Tim
+---------------
+Once upon a time, there was a little girl named Lily. She loved to play with her toys and her favorite toy was a teddy bear named Teddy. One day, Lily was playing with Teddy when she accidentally dropped Teddy on the floor. She cried and cried, but Teddy didn't let her down.
+
+Later that day, Lily's mom asked her to clean up her toys, but Lily didn't want to. Instead, she left Teddy outside and went outside to play in the snow. Later that day, when Lily went outside, she saw that Teddy was missing. She looked for him everywhere, but he was nowhere to be found.
+
+Lily was very sad and missed Teddy very much. She went back inside and cried herself to feel better. She realized that accidents happen, but it's important to keep things clean and not let others have to miss out on things.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play outside in the sun. One day, she saw a beautiful landscape with lots of trees and flowers. She thought it was very pretty because it was so beautiful.
+
+But one day, Lily's mom took her to the market to buy some groceries. When they got there, Lily saw some wild flowers and wanted to pick them out. Her mom said they didn't have enough money and they taken Lily's favorite flowers with them.
+
+Lily was sad because she loved going to the park. But then she heard a loud noise and saw a fierce lion scurrying towards her. She got scared and ran back home to her mom. Her mom said they would buy her a new flower. Lily felt better and smiled because she loved that her mom was with her beautiful flowers.<|endoftext|>Once upon a time, there was a little girl named Lily. She had a normal day at school and played with her friends. One day, Lily's teacher asked her how much she loved her day. Lily told her about her day at school and how much fun she had.
+
+The next day, Lily went to school and her teacher gave her a quiz. She was so excited and proud. Her teacher gave her a book to answer and Lily started to learn. She learned how to say the quiz questions and was very happy.
+
+The next day, Lily's teacher asked her to get a new book. Lily learned that her teacher was very strong and she could learn. She felt so proud of herself and couldn't
+---------------
+Once upon a time, there was a little girl named Lily. She loved to play outside. One day, it started to rain. Lily got very wet and didn't want to get wet. She went inside to get her mom's special umbrella.
+
+Her mom told her that it's important to be kind and not cry. So, Lily decided to help her mom clean up the house. She picked up all the wet toys and put them in a big box. Then, she used her mom's help to dry the house.
+
+When she was done, her mom was very happy. She gave Lily a big hug and said, "Thank you, Lily. You are a kind girl." From that day on, Lily always helped her mom in the garden.<|endoftext|>Once upon a time, there was a little boy named Tim. Tim was a red truck. He liked to drive his toy truck around the town. One day, while driving, he saw a big puddle. Tim wanted to splash in the puddle, so he turned on his vehicle. It was very high and made Tim feel lively. 
+
+The next day, Tim went back to the puddle and started to splash. He laughed and laughed as he splashed. But then, a big, dangerous dog came and wanted to play too. The dog started to chase Tim and his vehicle got wet. 
+
+Tim tried to run, but the dog was too fast. The dog swam away, and Tim was very sad. He went home with a heavy heart. Tim learned that sometimes, but with a little love, sometimes things can come your way.<|endoftext|>Once upon a time, in a small town, there was a little girl named Lily. Lily loved to play outside in the yard. One day, she saw a big, red truck. The truck was carrying a long stick to a new place.
+
+Lily thought it was fun to play with the truck. She said, "Can I ride the truck, please?" But the truck driver said, "No, you can't ride it. It's not safe." Lily was sad, but she listened to the truck driver.
+
+Lily had an idea. She found a long string and tied the string to the truck. She said, "Here, use this string to make a bow." The truck driver put a bow over the string and made a long, long bow for the bow. Lily was happy to play with
+---------------
+
+Overriding: out_dir = out-tinystories-12l
+Overriding: start = Once upon a time
+number of parameters: 30.84M
+Loading meta from data\tinystories\meta.pkl...
+No stoi/itos found in meta.pkl, assuming gpt2 tokenizer...
+Once upon a time, there was a little girl named Lily. Lily loved to play outside in the sunshine. One day, she was playing with her toys when she heard a loud noise. She looked up and saw a big, scary dog. 
+
+Lily ran to her mom and said, "Mommy, I didn't hear the noise. The dog's barking is scary." 
+
+Her mom replied, "Don't worry, let's go see what's wrong. Maybe it's just the sound." 
+
+So they went to the window and asked the dog's owner what was wrong. The owner said, "I'm sorry, I didn't see the dog." 
+
+Lily's mom said, "Don't worry, we'll help you." They went outside and tried to grab the dog. But the dog was too fast and ran away. 
+
+Lily was sad that her dog didn't get to see the scary dog, but she was proud that they were safe. From that day on, she made sure to always be careful when playing outside.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she saw a big, scary wolf in the forest. She was scared and ran away.
+
+Lily's friend, Timmy, came over and asked, "What's wrong, Lily?"
+
+"I saw a wolf in the forest," Lily said.
+
+Timmy said, "Don't worry, I'll always help you."
+
+They decided to bury some sticks in their garden. They dug a hole and threw them inside. They covered it with dirt and dirt. 
+
+After they finished burying the wolf, Lily said, "I'm so glad we were now safe. Now we can go play outside again. It's not scary, it's fun!" 
+
+Timmy smiled and said, "Yes, let's play!"<|endoftext|>Once upon a time, there was a little boy named Timmy. Timmy loved to play with his toys and run around outside. One day, Timmy's friend Billy came over to play. Timmy loved to play with his toy cars, but he didn't know where they went to. He asked Billy if he could play with them, but Billy said he didn't know. 
+
+Timmy was impatient and wanted to play with Billy. He tried to open the
+---------------
+Once upon a time, there was a little girl named Lily. She loved to stir things up and make them go vroom and make noises. One day, Lily's mommy took her to a sport game, and Lily was very excited. They played catch and ran around, and Lily felt like she was in her backyard. 
+
+After a while, Lily's mommy asked her to clean up her toys. Lily didn't want to stop, but she knew she had to listen to her mommy. When they started cleaning up, Lily noticed that her favorite toy was missing. She tried to reach it on the right line, but it was too far. 
+
+Lily felt sad that it was a lose game, but she was brave and kept trying. Finally, her mommy brought her a new toy to play with, and Lily was very happy. She learned that it's important to listen to your mommy and not let things go because there are big games and fun places.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play outside and look at the sky. One day, she saw a bird with a broken wing. Lily felt sad for the bird and wanted to help it. She ran to her daddy and said, "Daddy, there is a broken bird on the ground. Can we help the bird?"
+
+Her daddy said, "Don't worry, Lily. We can fix the bird and help it heal." They went to the store and got some tape and some tape. They fixed the bird's wing and it looked as good as new. Lily was so happy to see the bird better.
+
+After they fixed the bird, Lily said goodbye and went back to her home. She couldn't wait to play outside and see the sky again.<|endoftext|>Once upon a time, there was a little girl named Lily. One day, Lily's mom asked her to clean up her toys and put them in their proper place. Lily didn't want to, but her mom said it was important. 
+
+Lily started to put her toys away and finally finished putting them away. She felt happy and proud of herself. But then, she saw her little brother coming into the room. 
+
+Lily went to him and said, "Hi, what's your name?" The little brother answered, "Hi, Lily. I'm glad to see you." Lily smiled and said, "Thank you for being honest
+---------------
+Once upon a time, there was a little girl named Lily. She loved to play outside in the park. One day, she saw a little bird sitting on a branch. The little bird looked sad. 
+
+"Hello little bird," said Lily. "What is wrong?"
+
+"I lost my toy," said the bird. "Do you help me find it?"
+
+"I can help you find it," said Lily. "Let's look together." 
+
+They looked and looked until they found the toy. It was so happy and said, "Thank you very much!"
+
+"No problem," said Lily. "Do you want to be my friend?"
+
+The little bird replied, "Yes, I do! Let's play together." 
+
+So, Lily and the little bird played under the tree and had lots of fun. They became good friends and had many adventures together.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play with her toys, but she was very lonely. She had no one to play with, so she decided to go to the library.
+
+At the library, Lily saw a big bookcase full of books. She wanted to sit on a chair to read. But when she tried to sit on a chair, she started to complain. "I don't want to stand on a chair, it's too hard."
+
+Then, a little boy named Timmy came up to her and said, "Can I help you?" Lily said yes and they sat down together. Timmy showed her how to sit on the chair to help her sit. Lily was very happy and thanked Timmy.
+
+From that day on, Lily and Timmy became good friends. They always helped each other when they had complained about things. And Lily was not lonely anymore.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play outside in the sun. One day, she went to the park with her mommy and daddy. It was a hot day, but they got to walk on the swings. 
+
+While they were sitting, Lily saw a big red ball rolling down the hill. She wanted to play with it, but it was too high. 
+
+Suddenly, Lily felt something soft on her shoulder. It was her mommy's hand! She was holding her hand and saying, "Look at my hand!" Her mommy smiled
+---------------
+
+Overriding: out_dir = out-tinystories-16l-attnres
+Overriding: start = Once upon a time
+number of parameters: 35.76M
+Loading meta from data\tinystories\meta.pkl...
+No stoi/itos found in meta.pkl, assuming gpt2 tokenizer...
+Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she was playing with her toys when she found an unusual ornament. It had sparkles and sparkles on it. She picked it up and showed it to her mom.
+
+"Wow, that's a pretty ornament!" said Lily.
+
+"I know, sometimes different things like this one," said her mom. "You can use it to call me special or a gift. It's very unusual to see how it looks."
+
+Lily was very excited to learn something new. She used the ornament to make a wish come true. She wished and wished for something special. Suddenly, a big gust of wind came and blew the unusual ornament away. Lily was sad, but her mom hugged her and said, "Don't worry, Lily. We can fix it together."<|endoftext|>Once upon a time, there was a big leopard who lived in the jungle. One day, the leopard saw a little girl who was sad. The leopard asked her what was wrong and the little girl said she was hungry. The leopard knew how much the little girl loved her and wanted to go home. 
+
+The leopard offered the little girl some food, but the little girl's mom said no. The leopard was miserable and started to worry. The little girl's mom tried to tell the leopard not to worry, but the leopard didn't listen. The little girl took the leopard to the vet, but the leopard was still hungry and sad. 
+
+The little girl's mom was very angry and took the leopard away. The leopard was never able to enjoy her little life again. The little girl learned that sometimes even though the little girl's mom is not a good friend, the little girl is not a good friend.<|endoftext|>Once upon a time, there was a girl named Lily. She loved to play with her toys and run around outside. One day, she went to the park with her mom. There, she saw an acorn on the ground. It was an unknown acorn. She picked it up and held it in her hand. 
+
+As she was walking, she saw a boy who had lost his acorn. He looked sad and scared. Lily wanted to help him. She walked over and gave the boy his acorn. The boy was very happy and thanked Lily. 
+
+---------------
+Once upon a time, there was a big tree. The tree was so big that it was easy to reach. One day, a little girl came and sat under the tree. She looked up at the tree and felt happy.
+
+The girl wanted to climb the tree, so she started to run. She ran and ran, but she was too small. She kept falling down, and it made a funny noise. The girl started to cry.
+
+But then she saw that the tree was trying to be okay. She understood that the girl wanted to climb the tree. So, she tried again. This time, she was very good at climbing. She was so happy that she could climb the tree. The girl was glad that she was able to climb.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to draw and color with her crayons. But one day, her mommy gave her a new puzzle to play with. Lily was so excited to start using the puzzle that she ran to her mommy and said, "Mommy, can we finish the puzzle together?"
+
+Mommy said, "Sure, Lily. Let's finish the puzzle now." They worked together and finished the puzzle. Lily was so happy that she started to dance around the room.
+
+As they were working on the puzzle, Lily accidentally dropped the puzzle. It shattered into pieces and made a big mess. Lily was sad, but her mommy said, "It's okay, Lily. We can try again tomorrow."
+
+The next day, Lily and her mommy went on a walk in the park. Lily saw a little boy playing with a ball and started to smile. She said, "Hi, can we play with you?" The boy looked up and said, "Sure! Let's play together!" And so, Lily and the boy played happily and had fun together.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play in the park with her friends. One day, she saw a squirrel and showed it to her friend, Timmy.
+
+"Look at the squirrel! Do you like squirrels?" Timmy asked.
+
+Lily nodded her head and said, "Yes, I like squirrels. They are cute."
+
+Timmy smiled and said, "I like squirrels too. Let's go catch some squirrels!"
+
+They ran after the squirrels, but
+---------------
+Once upon a time, there was a little girl named Lily. She loved to play outside in the park. One day, she saw a little bird sitting on a branch. 
+
+Lily said, "Hello little birdie, why are you sitting on that branch?"
+
+"I am sitting here and I am looking at the sun," said the bird.
+
+Lily was curious so she said, "Why are you admiring the sun?"
+
+The bird replied, "I am admiring the sun, but I like sitting on my branch to look at it very closely. It makes me feel like a queen."
+
+Lily thought that was very cool and she wanted to be as tall as the bird. So, she got up and started to run around with the bird. They became friends and played together all afternoon. The end.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, Lily's mommy said, "Lily, it's time to take a bath. You're all wet."
+
+Lily said, "But I don't want to take a bath. Can I play a game?"
+
+Mommy said, "Yes, you can play with your toys. But don't forget your bathrobe!"
+
+Lily went to her room and played with her toys. She said, "Mommy, I have a new bathrobe! I like it!"
+
+Mommy smiled and said, "Thank you, Lily. You're such a good girl."<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she found a box of crayons and started to draw a picture of a flower. 
+
+Suddenly, her little brother came outside and saw the crayons. He wanted to play too, but he didn't ask. Lily got frustrated and started to cry. 
+
+Suddenly, her brother came outside and said, "Don't be sad, Lily. I have a new crayon in the box. You can use it to color the flower." 
+
+Lily smiled and said, "Okay, I'll be careful. Thank you for asking." She took the box of crayons and went inside to draw a beautiful flower. From that day on, she made sure to be careful when she drew and never asked her brother
+---------------
+Overriding: out_dir = out-tinystories-16l
+Overriding: start = Once upon a time
+number of parameters: 35.75M
+Loading meta from data\tinystories\meta.pkl...
+No stoi/itos found in meta.pkl, assuming gpt2 tokenizer...
+Once upon a time there was a little girl named Lily. She was three years old and loved to observe things. One day, she saw a gray mushroom in her garden! She was so excited, she couldn't help but laugh.
+
+Lily put the mushroom in her mouth and started to pray. She asked God to take care of the mushroom, and she prayed to God to make it happy.
+
+Every day she watered the mushroom and sang a happy song. Soon, a big, white cloud appeared in the sky. It was a beautiful sight.
+
+The cloud welcomed Lily with a kind smile. She loved the mushroom and thanked God for helping her.
+
+The end.<|endoftext|>Once upon a time there was a little girl called Maisie. She was three years old and loved to zoom around the garden. One day, Maisie found a big, sparkly diamond in the grass. She was so excited and picked it up. She ran to show her mum and said, "Look mum's diamond!" 
+
+Mum smiled and said, "Be careful this diamond has some dust, honey."
+
+But Maisie didn't listen and kept playing with the diamond. Suddenly, a big, loud voice came from behind her. "That's mine, you don't want to be careful with it!"
+
+Mum looked around and saw Maisie standing there, holding the diamond tightly in her hands. She kneeled down and said, "No! That's mine, I found it. I was just worried it was yours".
+
+Maisie looked at her mum and said, "Ok, fine. I'm sorry".
+
+Mum smiled and said, "It's okay. Just remember to be more careful with things like that".
+
+Maisie thanked her mum and ran off to play with her diamond. She zoomed around the garden happily, playing with it.<|endoftext|>Once upon a time there was a wealthy man who had a very special staff. Every day he would take it out and take it to the park to show it off.
+
+One day, the man was walking in the park and he saw a little girl walking by. She was crying and the man felt bad for her. He stopped and asked her what was wrong.
+
+The little girl said, "My brother wants my staff. He borrowed it from me."
+
+The man smiled and said, "The staff is very
+---------------
+Once upon a time, there was a big tree. The tree was so tall that it was easy to reach the top. Under the tree, there was a big tree. Under the tree, there was a little seed. The seed was planted. The seed was waiting for something. A big bird came and found the seed. The bird pushed the seed with its beak and it fell down. The bird was happy to have found the start of the tree.<|endoftext|>Once upon a time, in a small house, there was a boy named Tim. Tim was a kind boy who always helped his mom and dad. One day, they decided to bake a cake for their daughter's birthday party.
+
+Tim's mom said, "We need to bake the cake. Do you know what we can do?" Tim thought for a moment and then said, "We can ask the cat for help!" So, they went to the kitchen and Tim showed her the cake. The cat was very happy and said, "Thank you, Tim!"
+
+The cat started to bake the cake from the oven. But then, a big dog came into the kitchen. The dog was not nice. He barked at Tim and scared him away. Tim was sad and not happy. The party was not fun anymore.<|endoftext|>Once upon a time, there was a little boy named Tim. Tim loved to play outside with his friends. One day, Tim found a big, green rock in his yard. He thought it was very fun to play with.
+
+Tim's friend, Sam, saw the green rock and wanted to play with it too. Sam felt jealous and sad. He wanted to play with the green rock too. So, Tim said, "No, Sam! I want to play with it!"
+
+Sam didn't listen and kept playing with the rock. The rock got dirty and Tim felt very sad. He went home and told his mom what happened. His mom said, "I told you not to play with the rock. Now, you really wanted to play with it."
+
+Tim felt even more sorry for not listening to his friends. He learned that sometimes it's important to listen to your friends and not always want what others have.<|endoftext|>One day, a little boy named Tim went to the park. He saw a big tree with lots of apples. Tim wanted to pick an apple to eat. He took a big, thick apple and started to eat it.
+
+A
+---------------
+Once upon a time, there was a little girl named Lily. She loved to play pretend. One day, she pretended to be a princess and her clothes were her amazing castle. She used a big pillow as her favorite blanket as a cape.
+
+Lily's mom was watching her with a big smile on her face. She thought Lily looked very creative. Lily's mom suggested they make some cookies together. Lily loved cookies!
+
+After they baked the cookies, Lily and her mom put their cookies in the oven. While they waited for the cookies to cook, Lily asked her mom if she could have some cookies. Her mom said yes and they all enjoyed the cookies together.<|endoftext|>Once upon a time, there was a boy named Timmy. Timmy liked to play with his toy cars and trucks. One day, Timmy's dad asked him if he wanted to go to the park. Timmy said yes and they went to the park.
+
+At the park, Timmy saw a big tree with a swing hanging from it. He wanted to go on the swing, but it was too high for him to reach. He asked his dad to help him. His dad pulled and pushed Timmy higher and higher until he could see the sky.
+
+Timmy was so happy to go on the swing. He held onto the swing and started to swing back and forth. He loved the feeling of the wind on his face. After a while, Timmy's mom said it was time to go home. Timmy was sad to leave the park, but he knew he would be back tomorrow. The end.<|endoftext|>Once upon a time, there was a big, big elephant. He was enormous, with a brown mane and big teeth. The elephant was very friendly and liked to play with his friends in the jungle.
+
+One day, the elephant was playing with his friends when he saw a big, scary lion. The lion roared and then the elephant disappeared. The elephant was very scared and didn't know what to do.
+
+His friends saw that the elephant was okay and they all came to her safety. They were very brave and stayed close to her side. The elephant was happy to be safe and back with his friends. From that day on, the elephant's friends always remembered to stay close to her side.<|endoftext|>Once upon a time, there was a big bear. He was very intelligent and could do many things. One day, he went for a
+---------------
+
+Overriding: out_dir = out-tinystories-20l-attnres
+Overriding: start = Once upon a time
+number of parameters: 28.62M
+Loading meta from data\tinystories\meta.pkl...
+No stoi/itos found in meta.pkl, assuming gpt2 tokenizer...
+Once upon a time there was an elephant. He was very gentle and kind so he loved to explore. One day he decided to take a walk in the forest. As he was walking, he had an idea. He wanted to find something special.
+
+So he started to look around for something. He searched in the trees, under the benches, and in the bushes. He looked in every bush but nothing seemed quite right. 
+
+Finally he found a special present lying on the ground. He opened the present and inside he found a special gift. It was a toy elephant with a pretty ribbon. He was so happy!
+
+He put the gift in his pocket and went on his way. He was proud to have made the forest more special. He spent the day with all his new toy and how gentle the animals in the forest.<|endoftext|>Once upon a time, there was a little boy named Jack. He was a very curious boy. Every day he would spend his day exploring his house.
+
+One day, Jack's mom called him over for dinner. Jack was so hungry that he decided to take a nap. He curled up in his bed and soon fell asleep.
+
+But then Jack felt something strange. He looked up and saw his mom's thumb had come loose! Jack was so scared that he nearly ran away. He couldn't move.
+
+Suddenly, Jack heard a voice. It was a fairy! The fairy said, "Don't worry, Jack. I can help you get back to sleep."
+
+The fairy waved her wand and the thumb came loose. Jack was so happy and he thanked the fairy. He thanked her again and then went back to his bed. 
+
+The end.<|endoftext|>Once upon a time there was a lively little girl named Lucy. She loved to laugh and often ran around. 
+
+One day her grown up, her mom said "Let's make a tasty snack!" Lucy was so excited, she ran to the kitchen and gathered all the ingredients she needed. 
+
+Her mom poured some sauce into a hot pan and put it in the oven. Suddenly, the oven was filled with smoke and Lucy was very scared. 
+
+She ran to her mom, who was standing near the oven. "What's wrong, sweetheart?" Her mom asked. 
+
+"My pan is burning! It's burning!" Lucy exclaimed. 
+
+Her mom laughed and said, "That's ok
+---------------
+Once upon a time, there was a big tree. The tree was so tall that it was easy to reach the top. One day, the wind started to blow very hard. The tree fell down and broke, and the tree fell too.
+
+The tree suffered a lot and became very sad. It wanted to be like the tree, but it was too fragile. The tree felt very lonely and sad. It wanted to be able to grow and be like the tree, but it didn't know how.
+
+Days went by and the tree started to become brighter and stronger. One day, it came back to the tree and was soon as big and strong as its tree. The tree felt happy and it learned that even though it was not as fun as it looked, it could still be strong and strong.<|endoftext|>Once upon a time, there was a little boy named Timmy. He loved to play in the park with his friends. One day, Timmy and his friends decided to have a race. They all ran as fast as they could, but Timmy was too fast.
+
+Timmy's friend, Sally, saw that he was sad and asked him what was wrong. Timmy told her that he lost his toy car. Sally said, "Don't worry, we can find it together!" So, they all went to the pond and looked for the toy car.
+
+They looked and looked, but they couldn't find it. Just when they were about to give up, Sally fell into the pond. Timmy helped her out of the pond and they all laughed and played together. Sally said, "Thank you for helping me find my toy car! You're a good friend." Timmy smiled and said, "I'm just glad we found it!"<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play with her dolls and make them talk. One day, she went to visit her grandma who lived in a big house with a garden. Lily saw many pretty flowers and wanted to pick one.
+
+"Can I pick it, grandma?" Lily asked.
+
+"Yes, you can, but pick something easy," her grandma replied.
+
+Lily looked around the garden and saw some colorful flowers. She picked them and put them in a vase. She was so happy! Then, she saw a candle on her door. The candle was delicate and made a sound when you turned it on.
+
+
+---------------
+Once upon a time, there was a little girl named Lily. She loved to play pretend. One day, she pretended to be a princess and her clothes were her crown. She put on a fancy hat and a necklace with sparkly jewels.
+
+Lily went to her friend's house to play. Her friend, Timmy, said, "Wow, Lily! You look so pretty in your dress! I want to wear a hat like that too."
+
+Lily replied, "Yes, I do! But I don't want to wear any fancy clothes to be a princess. Let's pretend we are famous without a hat."
+
+So, Lily and Timmy pretended to be famous and had a lot of fun pretending. They played for a long time and had lots of fun. When it was time to go home, Lily said, "Thank you for playing with me, Timmy. I had so much fun pretending to be a princess. Let's do it again soon!"<|endoftext|>Once upon a time, there was a silly little girl named Lily. She loved to play outside in the sunshine and run around with her friends. One day, Lily's mommy gave her a big cardboard box full of toys and told her to help carry them to the living room.
+
+Lily was so excited to help her mommy and she grabbed the cardboard box and started to carry the other toys to the living room. As she was carrying the boxes, she saw a bird flying in the sky. Lily stopped and watched the bird, feeling happy that the toy was moving.
+
+Later that day, Lily's daddy came home to check on them. He had a big surprise for them, but they all looked uncomfortable. "What's wrong, kids?" he asked. "We're trying to carry these toys to the living room," Lily replied. "Can't you carry them too?"
+
+Daddy smiled and said, "Of course, but then let's make sure everyone is safe." Lily and her daddy worked together to carry the toys to the living room. They didn't want to scare the bird away, but they knew they had to be careful and watch out for any problems.
+
+Finally, when the children arrived at the living room, Lily's daddy helped them carry the box to the living room. Lily was so happy that they had helped her and helped make the living room look nice. From that day on, Lily loved to help her family and make sure
+---------------
+
+Overriding: out_dir = out-tinystories-20l
+Overriding: start = Once upon a time
+number of parameters: 28.60M
+Loading meta from data\tinystories\meta.pkl...
+No stoi/itos found in meta.pkl, assuming gpt2 tokenizer...
+Once upon a time there was a little girl named Lily. She loved to play in the park with her friends. One day, Lily saw a dirty bracelet on the ground. She picked it up and put it in her pocket. 
+
+Lily's friends wanted to play with the bracelet, but Lily didn't want to share it. She thought it was too pretty to give away. But her mom told her that it was important to share and let others play with it. 
+
+So, Lily gave the bracelet to her friends. They all played with it together and had lots of fun. They learned that it's always better to share and be kind to each other. The end.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to bake with her mommy. One day, they decided to bake cookies in the kitchen. Lily was very excited to help, but she accidentally knocked over a vase and it broke into many pieces.
+
+Lily started to cry because she's heart was hurting. Her mommy hugged her and said, "It's okay, Lily. We can buy you a new toy for you." Lily felt better knowing that her mommy loved her.
+
+But during the time they went to the toy store, they had to choose which toy to buy. Lily saw a toy she really wanted and started to scream. Her mommy told her it was okay and they bought it.
+
+Lily learned that it's important to be careful and to make sure things don't go as they seem. She also learned that it's okay to shout and scream when things don't go as planned.<|endoftext|>Once upon a time, there was a boy named Timmy. Timmy loved to play hide and seek with his friends. One day, Timmy's mom told him they were going to a big event. Timmy didn't want to go because he wanted to stay home and play. His mom said it was important to stay home and have fun with his friends.
+
+As they were leaving the event, Timmy saw a big dog outside. He was scared and started to cry. His mom tried to calm him down by talking to the dog, but Timmy was too scared to go near the dog. He said to his mom, "I don't want to go near the dog. It's scary."
+
+His mom hugged him and said, "I know you want to be brave like that dog
+---------------
+Once upon a time, there was a big tree. The tree was so big that it was easy to reach the top. Under the tree, there was a little girl. She was very small and loved to play.
+
+One day, the little girl found a pretty bug. The bug was a very pretty bug. The little girl wanted to take the bug home with her. So, she put the bug in a jar with some food and water. The bug was very happy in the jar.
+
+The little girl and the bug became best friends. They played together every day. The big tree helped the little girl find more bugs. And they lived happily ever after.<|endoftext|>One day, a little girl named Sue went to the park with her mom. Sue saw a big tree and wanted to climb it. She put on her mask and jumped up high to the tree. Sue was so happy to be up in the tree.
+
+Sue's mom saw her and said, "Be careful, Sue!" But Sue did not listen. She climbed down from the tree too fast and fell on the ground. Sue felt ashamed and said sorry to her mom.
+
+Sue's mom was sad and said, "I told you to be careful, Sue." Sue learned to listen to her mom and be careful. She still wanted to climb the tree, but she was too scared.<|endoftext|>Once upon a time, there was a little yellow bird named Bobo. Bobo lived in a big tree. He had many friends in the forest. Bobo loved to sing and play with his friends all day long.
+
+One day, Bobo saw a piece of paper on the ground. He wanted to see what it was. So, he picked it up with his beak and tried to kick it. But the paper fell on his beak and tore. Bobo was sad and scared.
+
+Bobo's friend, a wise old owl, saw what happened. The owl told Bobo to be careful with the paper. Bobo listened to the owl. The owl said it was okay to play with things that were interesting and could have bad consequences. Bobo promised to be more careful and not kick things.
+
+The moral of the story is to always ask for help and be careful. You can still have fun with your friends, but remember to remember to be careful with things that are not yours, and to listen to your friends when they tell you what to
+---------------
+Once upon a time, there was a little girl named Lily. She loved to play pretend. One day, she pretended to be a princess and a scary monster. She had so much fun pretending to be a princess in her costume!
+
+But then, her little brother was being bossy. He wanted to play with her costume too. Lily didn't like it and wanted to share. But she didn't want to share. She told her brother that it wasn't fair and that he needed to be nice.
+
+The brother got angry and yelled at Lily. She didn't want to lose her costume and broke it. They played together for the rest of the day, pretending to be superheroes. From that day on, they always played together nicely and made each other laugh.<|endoftext|>Once upon a time, there was a little girl named Lily. She loved to play with her toys all day long, but her favorite toy was a teddy bear. One day, Lily's friend Tommy came over to play. Tommy saw Lily's teddy bear and wanted to play with it.
+
+Lily felt jealous that Tommy wanted to play with the teddy bear too. She decided to play without it because her mom always told her not to. While they were playing, a big dog came running towards them. The dog knocked over the teddy bear and there was a big tear.
+
+Tommy felt very sad and didn't know what to do. Lily tried to clean the teddy bear, but it was too broken to fix. She realized that it didn't belong to her friend anymore, and she missed him more. She wished she could have done something to help him feel better.
+
+The moral of the story is that sometimes we want to do things that are not right, and we shouldn't be jealous of yourself. We should not be jealous of others and want to make others happy.<|endoftext|>Once upon a time, there was a little bunny named Benny. Benny liked to run and play in the forest. One day, Benny saw a big, juicy carrot. He wanted to eat it, but it was too high. Benny started to struggle to jump and jump as high as he could. 
+
+Suddenly, a bear appeared and saw Benny on top of the carrot. The bear was very angry and wanted to eat Benny. Benny was scared and wanted to run away. But the bear was too fast and caught Benny in his big paw. 
+
+Benny was
+---------------
