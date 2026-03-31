@@ -1,7 +1,7 @@
 # Deeper TinyStories AttnRes tuned for RTX5090 32G high-throughput depth-scaling runs.
 
 out_dir = 'out-tinystories-16l-attnres'
-eval_interval = 400
+eval_interval = 2000
 eval_iters = 100
 log_interval = 10
 
@@ -9,13 +9,13 @@ always_save_checkpoint = False
 
 wandb_log = True
 wandb_project = 'tinystories'
-wandb_run_name = 'attnres-16l-320d-rtx5090-bs48-b512-cmp'
+wandb_run_name = 'attnres-16l-320d-rtx5090-bs16-b512-cmp'
 track_diagnostics = True
 diagnostics_interval = 100
 
 dataset = 'tinystories'
 gradient_accumulation_steps = 2
-batch_size = 48
+batch_size = 16
 block_size = 512
 
 n_layer = 16
@@ -31,5 +31,3 @@ lr_decay_iters = 24000
 min_lr = 3e-5
 beta2 = 0.99
 warmup_iters = 300
-
-compile = True
